@@ -17,11 +17,13 @@ def read_points_from_csv(filepath):
 points = read_points_from_csv('./Linearregression/points.csv')
 
 
+y_values = [p[1] for p in points]
+b_range = max(y_values)
+
 results = []
 angles_list = []
 b_list = []
 angle_range = 180  # 각도 범위
-b_range = 100      # y절편 범위
 
 angles = [i * (angle_range / NUM_ANGLE_DIVISIONS) for i in range(NUM_ANGLE_DIVISIONS)]
 bs = [i * (b_range / NUM_ANGLE_DIVISIONS) for i in range(NUM_ANGLE_DIVISIONS)]
