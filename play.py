@@ -1,11 +1,13 @@
 import subprocess
+import os
 
-# 실행할 파일 리스트 (순서대로)
+base_dir = r"c:경로 알아 넣으쇼"
+
 file_list = [
-    "reset.py",
-    "points_make.py",
-    "mylinearregresion.py",
-    "module.py"
+    os.path.join(base_dir, "reset.py"),
+    os.path.join(base_dir, "points_make.py"),
+    os.path.join(base_dir, "mylinearregression.py"),
+    os.path.join(base_dir, "module.py")
 ]
 
 for file in file_list:
