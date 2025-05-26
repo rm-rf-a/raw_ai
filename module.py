@@ -14,30 +14,28 @@ def read_points_from_csv(filepath):
             points.append((x, y))
     return points
 
-# 데이터 읽기
-points = read_points_from_csv('./Linearregression/points.csv')
-X = np.array([p[0] for p in points]).reshape(-1, 1)
-y = np.array([p[1] for p in points])
 
-# 선형회귀 모델 학습
-model = LinearRegression()
-model.fit(X, y)
 
-# 예측 및 평가
-y_pred = model.predict(X)
-mse = mean_squared_error(y, y_pred)
-mae = mean_absolute_error(y, y_pred)
+if __name__ == "__main__":
+    # 데이터 읽기
+    points = read_points_from_csv('./data/points.csv')
+    X = np.array([p[0] for p in points]).reshape(-1, 1)
+    y = np.array([p[1] for p in points])
 
-slope = model.coef_[0]
-angle_deg = math.degrees(math.atan(slope))  
-intercept = model.intercept_
+    # 선형회귀 모델 학습
+    model = LinearRegression()
+    model.fit(X, y)
 
-print(f"모듈 각도(degree): {angle_deg:.5f}")
-print(f"모듈 y절편(intercept_): {intercept}")
-print(f"모듈 MSE: {mse:.5f}")
-print(f"모듈 MAE: {mae:.5f}")
+    # 예측 및 평가
+    y_pred = model.predict(X)
+    mse = mean_squared_error(y, y_pred)
+    mae = mean_absolute_error(y, y_pred)
 
-with open('./Linearregression/module_result.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(['angle', 'b', 'mse', 'mae'])
-    writer.writerow([round(angle_deg, 5), round(intercept, 5), round(mse, 5), round(mae, 5)])
+    slope = model.coef_[0]
+    angle_deg = math.degrees(math.atan(slope))  
+    intercept = model.intercept_
+
+    with open('./data/module_result.csv', 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(['angle', 'b', 'mse', 'mae'])
+        writer.writerow([round(angle_deg, 5), round(intercept, 5), round(mse, 5), round(mae, 5)])

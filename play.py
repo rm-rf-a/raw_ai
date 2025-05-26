@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-base_dir = r"c:경로 알아 넣으쇼"
+base_dir = r"C:\Users\ballo\OneDrive\문서\raw_ai\Linearregression"
 
 file_list = [
     os.path.join(base_dir, "reset.py"),
